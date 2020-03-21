@@ -11,6 +11,7 @@ typedef struct Node {
 typedef struct List {
 	Node* head;
 	Node* tail;
+	int size;
 } List;
 
 // Function that creates a new instance of a List
@@ -24,6 +25,8 @@ List* make(int d) {
 	new_list->head = new_node;
 	new_list->tail = NULL;
 
+	new_list->size = 1;
+
 	return new_list;
 }
 
@@ -32,6 +35,9 @@ List* make(int d) {
 void add(int d, List* list) {
 	Node* new_node = malloc(sizeof(Node));
 	new_node->data = d;
+
+	// increment the list size
+	list->size++;
 
 	if (list->tail == NULL) {
 		// if it is NULL, it means it's the second entry
@@ -56,7 +62,7 @@ void print_list(List* list) {
 		current_node = current_node->node;
 		if (current_node->node == NULL) {
 			i++;
-			printf("Node #%d is %d.\nEnd of List.\n",i , current_node->data);
+			printf("Node #%d is %d.\nEnd of List. %d List(s).\n",i , current_node->data, list->size);
 			break;
 		}
 		i++;
