@@ -35,6 +35,7 @@ List* make(int d) {
 void add(int d, List* list) {
 	Node* new_node = malloc(sizeof(Node));
 	new_node->data = d;
+    new_node->node = NULL;
 
 	// increment the list size
 	list->size++;
